@@ -66,9 +66,11 @@ class Solution(object):
 
 """
 During the contest I had a vague idea of doing a depth first search. Namely by keeping a counter starting with 1. Each time we start from the land
-and then go out to hunt for the water. We increment the counter by 1 during each iteration. 
-This process terminates once all of the area has been reached. We then return the counter name. However, I wasn't able to code up a solution. 
-Mainly due to the fact that I am not sure if this land has been visited or not. 
+and then go out to hunt for the water. We increment the counter by 1 during each iteration. This process terminates once all of the area has been reached. 
+We then return the counter name.
+
+However, I wasn't able to code up a solution due to the fact that I am not sure how to determine if the land has been visited or not. But this can be easily
+solved by only storing the land that is in the border.
 """
 # The key is to keep a list of the *edge* land. And we only store the land that is recently added, and also we change the original grid.
 class Solution(object):
