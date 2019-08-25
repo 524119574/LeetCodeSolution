@@ -70,7 +70,6 @@ class RandomizedSet(object):
         else:
             self.nums.discard(val)
             return False
-        
 
     def getRandom(self):
         """
@@ -80,8 +79,6 @@ class RandomizedSet(object):
         temp = list(self.nums)
         idx = random.randint(0, len(temp) - 1)
         return temp[idx]
-        
-
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()
@@ -90,17 +87,17 @@ class RandomizedSet(object):
 # param_3 = obj.getRandom()
 
 """
-Note that the above solution doesn't satisfy the given requirement since, the conversion from set to list is not O(1).
+Note that the above solution doesn't satisfy the requirement, since the conversion from set to list is not O(1).
 
-The below solution satisfies the requirements. The idea is to keep a list of numbers, and keep a dictionary to keep track of the index of the numbers
-within the list.
+The below solution satisfies the requirements. The idea is to keep a list of numbers, and keep a mapping from the number to their index in the list.
 
 Possible Follow-up:
-In the current requirement, we don't allow the numbers to be duplicated, what if we allow the numbers to be duplicated? How do we still achieve the O(1)
+Currently, we don't allow the numbers to be duplicated, what if we allow the numbers to be duplicated? How do we still achieve the O(1)
 time complexity.
 
 Ans:
 Instead of using a map between integer(val) to integer(index), we should use a map that maps from integer(val) to set(a set of index).
+
 """
 
 class RandomizedSet(object):
@@ -132,8 +129,8 @@ class RandomizedSet(object):
         """
         if (val in self.pos):
             idx, lastVal = self.pos[val], self.nums[-1]
-            self.pos[lastVal], self.nums[idx] = idx, lastVal  # Move the last element to the position of `val`
-            self.nums.pop(), self.pos.pop(val)
+            self.pos[lastVal], self.nums[idx] = idx, lastVal  # Move the last element to the position of `val`.
+            self.nums.pop(), self.pos.pop(val)                # Then remove the last element.
             return True
         return False
 
