@@ -38,3 +38,28 @@ class Solution(object):
             mov += abs(idx - prv)
             prv = idx
         return mov
+
+"""
+However note that the above solution is not optimal, the problem is that the
+keyboard.find is O(length of `keyboard`), so we can use some data structures to
+store the position per character. Below solution uses a hashmap, this can also
+be done using an array. We can just map the index of 'a' to the first element,
+the index of 'b' to the second element, the index of 'c' to the third element
+and so on.
+"""
+class Solution(object):
+    def calculateTime(self, keyboard, word):
+        """
+        :type keyboard: str
+        :type word: str
+        :rtype: int
+        """
+        mov = prv = 0
+        idxs = {}
+        for i in range(len(keyboard)):
+            idxs[keyboard[i]] = i
+        for c in word:
+            idx = idxs[c]
+            mov += abs(idx - prv)
+            prv = idx
+        return mov
